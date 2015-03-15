@@ -32,4 +32,8 @@ RSpec.describe Tictactoe, type: :model do
 
     expect(game.board).to eq "123ox6789"
   end
+
+  it "players cannot choose a spot that has already been chosen" do
+
+  end
 end
