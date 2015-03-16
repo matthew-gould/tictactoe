@@ -20,7 +20,7 @@ class TictactoesController < ApplicationController
   #     render :spectate # view for spectators, has no form
   #   end
   # end
-  
+
   # def move
   #   game = Tictactoe.saved_game params[:id]
   #   if game.over?
@@ -30,11 +30,11 @@ class TictactoesController < ApplicationController
   #   else
   #     flash[:danger] = "It's not your turn to play!"
   #   end
-  #   redirect_to hangman_show_path(game)
+  #   redirect_to show_tictactoe_path(game)
   # end
 
   # def create
   #   game = Tictactoe.start_game current_user
-  #   redirect_to hangman_show_path(game)
+  #   redirect_to show_tictactoe_path(game)
   # end
 end

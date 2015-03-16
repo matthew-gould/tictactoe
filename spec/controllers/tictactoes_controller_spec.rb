@@ -9,10 +9,10 @@ describe TictactoesController do
 
     get :index
 
-    expect(response.code.to_i).to eq 200
+    expect(response.code.to_i).to eq 302 # redirect
   end
 
   it "can let players choose an opponent" do
-    
+
   end
 end

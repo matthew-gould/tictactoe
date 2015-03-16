@@ -3,7 +3,6 @@
 <label for="col1"><b>Choose Opponent:</b></label> 
 <%= collection_select(:user, :id, @opponents, :id, :email, :prompt => true) %>
 <%= button_to "Play", action: "create" %>
-<form method="post" action="/tictactoe" class="button_to">
 </form>
 
 </div>
