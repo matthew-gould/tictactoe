@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   get 'tictactoe/:tictactoe_id' => 'tictactoes#show', as: 'show_tictactoe'
 
+  post 'tictactoe/:tictactoe_id' => 'tictactoes#update'
+
 end

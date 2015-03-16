@@ -1,15 +1,41 @@
 class Tictactoe < ActiveRecord::Base
   belongs_to :users
 
-  def take_turn (letter, place)
-    if letter != "x" && letter != "o"
+  validates :players, presence: true, length: { minimum: 2 }
+
+  serialize :players, JSON
+
+  def take_turn (symbol, place)
+    if symbol != "x" && symbol != "o"
       false
     end
     if self.board[place-1] != "x" && self.board[place-1] != "o" && place > 0 && place < 10
-      self.board[place-1] = letter
+      self.board[place-1] = symbol
       self.turn += 1
     end
       self.save!
+  end
+
+  def player_turn? p
+    p == players[current_player]
+  end
+
+  def current_symbol
+    current_player.zero? ? "x" : "o"
+  end
+
+  def toggle_player
+    if current_player.zero?
+      update current_player: 1
+    else
+      update current_player: 0
+    end
+  end
+
+  def record_move place
+    take_turn current_symbol, place
+    toggle_player
+    save!
   end
 
   def over?

@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313173733) do
+ActiveRecord::Schema.define(version: 20150316204255) do
 
   create_table "tictactoes", force: :cascade do |t|
-    t.string   "board",      default: "123456789"
-    t.integer  "player_x"
-    t.integer  "player_o"
-    t.integer  "turn",       default: 0
+    t.string   "board",          default: "123456789"
+    t.integer  "turn",           default: 0
     t.integer  "winner_id"
     t.integer  "loser_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.text     "players"
+    t.integer  "current_player", default: 0
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,7 +6,7 @@ RSpec.describe Tictactoe, type: :model do
     user1 = FactoryGirl.create :user
     user2 = FactoryGirl.create :user
 
-    game = Tictactoe.new(player_x: user1.id, player_o: user2.id)
+    game = Tictactoe.new(players: [user1.id, user2.id])
 
     board = game.board
     board[0] = "x"
@@ -20,7 +20,7 @@ RSpec.describe Tictactoe, type: :model do
     user1 = FactoryGirl.create :user
     user2 = FactoryGirl.create :user
 
-    game = Tictactoe.new(player_x: user1.id, player_o: user2.id)
+    game = Tictactoe.new(players: [user1.id, user2.id])
 
     game.take_turn "x", 5
     game.take_turn "o", 4
@@ -37,7 +37,7 @@ RSpec.describe Tictactoe, type: :model do
     user1 = FactoryGirl.create :user
     user2 = FactoryGirl.create :user
 
-    game = Tictactoe.new(player_x: user1.id, player_o: user2.id)
+    game = Tictactoe.new(players: [user1.id, user2.id])
 
     game.board = "1oxoxox89"
 
@@ -66,7 +66,7 @@ RSpec.describe Tictactoe, type: :model do
     user1 = FactoryGirl.create :user
     user2 = FactoryGirl.create :user
 
-    game = Tictactoe.new(player_x: user1.id, player_o: user2.id)
+    game = Tictactoe.new(players: [user1.id, user2.id])
 
     game.board = "xo3oxoxox"
     game.turn = 8
@@ -80,7 +80,7 @@ RSpec.describe Tictactoe, type: :model do
     user1 = FactoryGirl.create :user
     user2 = FactoryGirl.create :user
 
-    game = Tictactoe.new(player_x: user1.id, player_o: user2.id)
+    game = Tictactoe.new(players: [user1.id, user2.id])
 
     game.take_turn "x", 1
     game.take_turn "x", 2
@@ -100,7 +100,7 @@ RSpec.describe Tictactoe, type: :model do
     user1 = FactoryGirl.create :user
     user2 = FactoryGirl.create :user
 
-    game = Tictactoe.new(player_x: user1.id, player_o: user2.id)
+    game = Tictactoe.new(players: [user1.id, user2.id])
 
     game.board = "xx3oxoxox"
     game.turn = 8
@@ -131,4 +131,28 @@ RSpec.describe Tictactoe, type: :model do
     expect(game.over?).to eq true
     expect(game.winner?).to eq "x"
   end
+
+  describe Tictactoe do
+  it "can lookup games from the database" do
+    created = Tictactoe.create! players: [1,2]
+    binding.pry
+    loaded  = Tictactoe.find_by(created.id)
+    expect(created.id).to eq loaded.id
+    expect(loaded.player_turn? 1).to eq true
+  end
+
+  it "can record a move" do
+    g = Tictactoe.new players: [4,7]
+    g.record_move 3
+    expect(g.value_at 3).to eq "x"
+  end
+
+  it "knows whos turn it is" do
+    g = Tictactoe.new players: [4,7]
+    g.record_move 3
+    g.record_move 5
+    g.record_move 1
+    expect(g.player_turn? 7).to eq true
+  end
+end
 end

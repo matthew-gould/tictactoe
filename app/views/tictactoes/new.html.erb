@@ -1,8 +1,8 @@
 <div class="container">
-<form>
+<%=form_tag method: "POST", action: "create" %>
 <label for="col1"><b>Choose Opponent:</b></label> 
 <%= collection_select(:user, :id, @opponents, :id, :email, :prompt => true) %>
-<%= button_to "Play", action: "create" %>
+<button class="btn btn-normal">Play</button>
 </form>
 
 </div>
