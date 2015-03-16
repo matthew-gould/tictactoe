@@ -131,9 +131,4 @@ RSpec.describe Tictactoe, type: :model do
     expect(game.over?).to eq true
     expect(game.winner?).to eq "x"
   end
-
-
-
-
-
 end

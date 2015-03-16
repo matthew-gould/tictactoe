@@ -1,0 +1,11 @@
+<div class="container">
+<form>
+<label for="col1"><b>Choose Opponent:</b></label> 
+<%= collection_select(:user, :email, @opponents, :id, :email, :prompt => true) %>
+<%= button_to "Tictactoe", action: "create" %>
+<form method="post" action="/tictactoe" class="button_to">
+</form>
+
+</div>
+
+<% select(:user, :email, @opponents.collect {|e| [e.email, e.id]})%>
