@@ -135,7 +135,6 @@ RSpec.describe Tictactoe, type: :model do
   describe Tictactoe do
   it "can lookup games from the database" do
     created = Tictactoe.create! players: [1,2]
-    binding.pry
     loaded  = Tictactoe.find_by(created.id)
     expect(created.id).to eq loaded.id
     expect(loaded.player_turn? 1).to eq true

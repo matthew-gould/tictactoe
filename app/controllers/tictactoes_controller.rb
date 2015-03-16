@@ -14,7 +14,7 @@ class TictactoesController < ApplicationController
   end
 
   def show
-    @game = Tictactoe.find_by(params[:id])
+    @game = Tictactoe.find_by(id: params[:id])
     @can_play = @game.winner.nil? && @game.player_turn?(current_user.id)
   end
 
