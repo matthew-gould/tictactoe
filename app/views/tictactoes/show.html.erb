@@ -1,3 +1,12 @@
+<div class="container">
+<% if @game.winner? %>
+  <h3> Game over. <%= @game.winner %> won.</h>
+<% elsif @can_play %>
+  <p> It's YOUR turn </p>
+<% else %>
+  <h3> It's <%= @game.current_symbol %>'s turn.</h>
+<% end %>
+</div>
 
 <div class="container">
 <table class="table table-condensed">
