@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   get 'tictactoe/:tictactoe_id' => 'tictactoes#show', as: 'show_tictactoe'
 
-  post 'tictactoe/:tictactoe_id' => 'tictactoes#update'
+  post 'tictactoe/:tictactoe_id/update' => 'tictactoes#update', as: 'update_tictactoe'
 
 end

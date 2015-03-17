@@ -9,16 +9,25 @@ class TictactoesController < ApplicationController
 
   def create
     game_params = params[:user]
-    game = Tictactoe.create! players: [current_user.id, game_params[:id]]
+    game = Tictactoe.create! players: [current_user.id.to_s, game_params[:id]]
     redirect_to show_tictactoe_path(game)
   end
 
   def show
     @game = Tictactoe.find_by(id: params[:tictactoe_id])
-    @can_play = @game.winner? && @game.player_turn?(current_user.id)
+    if @game.player_turn?(current_user.id.to_s) && @game.winner? != "x" && @game.winner? != "o"
+      @can_play = true
+    end
   end
 
   def update
+    game = Tictactoe.find_by id: params[:tictactoe_id]
+    if game.player_turn? current_user.id.to_s
+      game.record_move params[:move].to_i
+    else
+      flash[:danger] = "It's not your turn!"
+    end
+    redirect_to show_tictactoe_path(game)
   end
 
   # def show

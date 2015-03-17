@@ -6,9 +6,6 @@ class Tictactoe < ActiveRecord::Base
   serialize :players, JSON
 
   def take_turn (symbol, place)
-    if symbol != "x" && symbol != "o"
-      false
-    end
     if self.board[place-1] != "x" && self.board[place-1] != "o" && place > 0 && place < 10
       self.board[place-1] = symbol
       self.turn += 1
@@ -65,6 +62,6 @@ class Tictactoe < ActiveRecord::Base
           return value_at(line.first)
         end
       end
-      nil
+      false
   end
 end
