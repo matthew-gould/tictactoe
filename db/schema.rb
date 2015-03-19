@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316204255) do
+ActiveRecord::Schema.define(version: 20150318202804) do
+
+  create_table "hangmen", force: :cascade do |t|
+    t.integer  "player_id",                null: false
+    t.string   "answer",                   null: false
+    t.integer  "guesses_left", default: 6
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "guesses"
+  end
 
   create_table "tictactoes", force: :cascade do |t|
     t.string   "board",          default: "123456789"
