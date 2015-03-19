@@ -8,15 +8,15 @@ class Hangman < ActiveRecord::Base
     select { |w| w.length < 8 && w.length > 1 }.
     map { |w| w.chomp }
  
-  def guesses
-    self.guesses
+  def guesses_array
+    guesses
   end
  
   def board
     result = ""
 
     answer.split("").each do |letter|
-      if self.guesses.include? letter
+      if guesses.include? letter
         result += letter
       else
         result += "_"
@@ -26,7 +26,7 @@ class Hangman < ActiveRecord::Base
   end
  
   def take_move guess
-    self.guesses = (guesses + [guess]).to_json
+    guesses_array = (guesses << guess)
  
     unless answer.include? guess
       self.guesses_left -= 1
