@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get 'hangman/new' => 'hangman@new', as: 'new_hangman'
   post 'hangman' => 'hangman#create', as: 'create_hangman'
   get 'hangman/:hangman_id' => 'hangman#show', as: 'show_hangman'
-  post 'hangman/:hangman_id/update' => 'hangman#update', as: 'update_hangman'
+  post 'hangman/:hangman_id/update' => 'hangman#move', as: 'update_hangman'
 end

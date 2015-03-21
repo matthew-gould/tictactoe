@@ -17,9 +17,9 @@ class Hangman < ActiveRecord::Base
 
     answer.split("").each do |letter|
       if guesses.include? letter
-        result += letter
+        result += "#{letter} "
       else
-        result += "_"
+        result += "_ "
       end
     end
     result
@@ -39,7 +39,13 @@ class Hangman < ActiveRecord::Base
   end
  
   def won?
-    board == answer
+    self.board.split(" ").join("") == answer
+  end
+
+  def over?
+    if won? || lost?
+      true
+    end
   end
  
   def current_player

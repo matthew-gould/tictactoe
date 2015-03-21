@@ -6,7 +6,7 @@ RSpec.describe Hangman, type: :model do
 
     game.board
 
-    expect(game.board).to eq "______"
+    expect(game.board).to eq "_ _ _ _ _ _ "
   end
 
   it "board knows when a letter has been guessed" do
@@ -15,7 +15,7 @@ RSpec.describe Hangman, type: :model do
     game.guesses = ["b","a"]
     game.board
 
-    expect(game.board).to eq "ba_a_a"
+    expect(game.board).to eq "b a _ a _ a "
   end
 
   it "can collect guessed letters in guesses" do
@@ -38,17 +38,7 @@ RSpec.describe Hangman, type: :model do
     game.take_move "n"
 
     expect(game.guesses).to eq ["x","t","r","b","n"]
-    expect(game.board).to eq "b_n_n_"
-  end
-
-  it "knows when the game is over" do
-    game = FactoryGirl.create :hangman
-
-    game.take_move "b"
-    game.take_move "a"
-    game.take_move "n"
-    
-    expect(game.won?).to eq true
+    expect(game.board).to eq "b _ n _ n _ "
   end
 
   it "ends the game when player runs out of turns" do
@@ -63,5 +53,16 @@ RSpec.describe Hangman, type: :model do
 
     expect(game.lost?).to eq true
     expect(game.guesses_left).to eq 0
+  end
+
+  it "knows when game is over" do
+    game = FactoryGirl.create :hangman
+
+    game.take_move "b"
+    game.take_move "a"
+    game.take_move "n"
+    
+    expect(game.won?).to eq true
+    expect(game.over?).to eq true
   end
 end

@@ -1,0 +1,20 @@
+<div class="container">
+<% if @game.over? %>
+	<h2>YOU WIN!</h2>
+  <h3>The word was: <%= @game.board %></h3>
+  <hr>
+  <button class="btn btn-xs"><%=link_to "New Game", new_hangman_path %></button>
+<% else %>
+  Guess The Answer:
+  <hr>
+  <h1><%= @game.board %></h1>
+  <hr>
+  Guesses: <%= @game.guesses %>
+
+  <%=form_tag method: "POST", action: "move" %>
+  <input type="input" name="move">
+  <button class="btn btn-xs">Submit</button>
+  </form>
+<% end %>
+      
+</div>
