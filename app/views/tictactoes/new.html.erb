@@ -2,7 +2,7 @@
 <%=form_tag method: "POST", action: "create" %>
 <label for="col1"><b>Choose Opponent:</b></label> 
 <%= collection_select(:user, :id, @opponents, :id, :email, :prompt => true) %>
-<button class="btn btn-normal">Play</button>
+<button class="btn btn-xs">Start Game</button>
 </form>
 
 </div>
