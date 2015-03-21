@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="container">
+<button class="btn btn-xs"><%=link_to "Game Select", root_path %></button>
 <% if current_user %>
   <span><%= current_user.email %></span>
   <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
