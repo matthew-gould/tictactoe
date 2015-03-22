@@ -1,8 +1,15 @@
 <div class="container">
 <% if @game.winner? %>
-  <h3> Game over. <%= @game.winner? %> won.</h>
-  <hr>
-  <button class="btn btn-normal"><%= link_to "New Game?", new_tictactoe_path %></button>
+ <div class="alert alert-info">
+        <a href="http://localhost:3000" class="btn btn-xs btn-primary pull-right">New Game</a>
+        <strong>GAME OVER:</strong> <%= @game.winner? %> WON!
+  </div>
+<% elsif @game.tie? %>
+<% binding.pry %>
+  <div class="alert alert-info">
+        <a href="http://localhost:3000" class="btn btn-xs btn-primary pull-right">New Game</a>
+        <strong>GAME OVER:</strong> IT'S A TIE!
+  </div>
 <% elsif @can_play %>
   <p> It's YOUR turn </p>
 <% else %>

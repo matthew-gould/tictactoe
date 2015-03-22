@@ -1,9 +1,18 @@
 <div class="container">
-<% if @game.over? %>
-	<h2>YOU WIN!</h2>
-  <h3>The word was: <%= @game.board %></h3>
+<% if @game.won? %>
+	 <div class="alert alert-info">
+        <a href="http://localhost:3000" class="btn btn-xs btn-primary pull-right">New Game</a>
+        <strong>WAY TO GO:</strong> YOU WON!
+  </div>
+  <h3>The word was: <%= @game.answer %></h3>
   <hr>
-  <button class="btn btn-xs"><%=link_to "New Game", new_hangman_path %></button>
+  <% elsif %>
+  <% @game.lost? %>
+   <div class="alert alert-info">
+        <a href="http://localhost:3000" class="btn btn-xs btn-primary pull-right">New Game</a>
+        <strong>SORRY:</strong> YOU LOST!
+  </div>
+  <h3>The word was: <%= @game.answer %></h3>
 <% else %>
   Guess The Answer:
   <hr>

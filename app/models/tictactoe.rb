@@ -42,6 +42,12 @@ class Tictactoe < ActiveRecord::Base
     end
   end
 
+  def tie?
+    if turn == 9 && winner? == false
+      true
+    end
+  end
+
   def value_at place
       self.board[place-1]
     end

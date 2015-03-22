@@ -1,13 +1,16 @@
 <hr>
-<div class="container">
-<h2>CHOOSE YOUR GAME!</h2>
-</div>
+	<div class="container">
+		<h3>CHOOSE YOUR GAME!</h3>
+	</div>
 <hr>
-<div class="container">
-<button class="btn btn-xs"><%= link_to 'Tictactoe', new_tictactoe_path %></button>
-</div>
+  <div class="container">
+    <button class="btn btn-xs"><%= link_to 'Tictactoe', new_tictactoe_path %></button>
+  </div>
 <hr>
-<div class="container">
-<button class="btn btn-xs"><%= link_to 'Hangman', new_hangman_path %></button>
-</div>
+  <div class="container">
+    <button class="btn btn-xs"><%= link_to 'Hangman', new_hangman_path %></button>
+  </div>
 <hr>
+  <div class = "container">
+    Current Games:
+    <%= @tictactoe %>

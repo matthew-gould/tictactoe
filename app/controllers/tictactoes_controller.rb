@@ -1,6 +1,9 @@
 class TictactoesController < ApplicationController
 
   def index
+    @tictactoe = Tictactoe.where :players == current_user.id
+    binding.pry
+    @hangman = Hangman.all
   end
 
   def new
