@@ -55,7 +55,7 @@ class Hangman < ActiveRecord::Base
   def self.start_game player
     Hangman.create!(
       player_id: player.id,
-      answer: Words.sample,
+      answer: Words.sample.downcase,
       guesses_left: 6,
     )
   end

@@ -10,7 +10,22 @@
   <div class="container">
     <button class="btn btn-xs"><%= link_to 'Hangman', new_hangman_path %></button>
   </div>
-<hr>
   <div class = "container">
-    Current Games:
-    <%= @tictactoe %>
+  <br>
+  <br>
+    Current Hangman Games:
+    <br>
+    <% @hangman.each do |game| %>
+      <table class="table table-condensed table-striped" width=100 height=50>
+        <tr>
+          <th> Game ID </th>
+          <th> Completed? </th>
+        </tr>
+        <tr> 
+          <td><%= link_to game.id, show_hangman_path(game) %></td>
+          <td><%= game.over? %></td>
+        </tr>
+      </table>
+    <% end %>
+
+  </div>
