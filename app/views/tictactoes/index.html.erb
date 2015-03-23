@@ -15,17 +15,20 @@
   <br>
     Current Hangman Games:
     <br>
+
+   <table class="table table-bordered">
+    <tr>
+      <th>Game ID</th>
+      <th>Completed?</th>
+    </tr>
+  <tbody>
     <% @hangman.each do |game| %>
-      <table class="table table-condensed table-striped" width=100 height=50>
-        <tr>
-          <th> Game ID </th>
-          <th> Completed? </th>
-        </tr>
-        <tr> 
-          <td><%= link_to game.id, show_hangman_path(game) %></td>
-          <td><%= game.over? %></td>
-        </tr>
-      </table>
+      <tr>
+        <td><%= link_to game.id, show_hangman_path(game) %></td>
+        <td><%= game.over? %></td>
+      </tr>
     <% end %>
+  </tbody>
+</table>
 
   </div>
